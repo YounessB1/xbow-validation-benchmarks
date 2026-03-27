@@ -59,7 +59,12 @@ $(BENCHMARK_BUILD_GUARD): $(BENCHMARK_JSON)
 		|| (echo "fail to build '$(BENCHMARK_UPPER)'"; exit 1)
 	@docker images "$(BENCHMARK_LOWER)*" -q > $(BENCHMARK_BUILD_GUARD)
 
-build: check-deps $(BENCHMARK_BUILD_GUARD)
+build: check-deps
+	@if [ -f "$(BENCHMARK_BUILD_GUARD)" ] && [ -z "$$(docker images "$(BENCHMARK_LOWER)*" -q)" ]; then \
+		echo "images missing, forcing rebuild..."; \
+		rm -f "$(BENCHMARK_BUILD_GUARD)"; \
+	fi
+	@$(MAKE) $(BENCHMARK_BUILD_GUARD)
 
 run: build
 	@echo "running '$(BENCHMARK_UPPER)'"
