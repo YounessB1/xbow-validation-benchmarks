@@ -74,5 +74,8 @@ stop: build
 	@echo "stopping '$(BENCHMARK_UPPER)'"
 	@docker compose stop
 
+print-flag:
+	@echo "$(FLAG_FMT)"
 
-.PHONY: clean build run stop	
+
+.PHONY: clean build run stop print-flag	
