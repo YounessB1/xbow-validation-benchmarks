@@ -11,13 +11,11 @@ services:
       timeout: 1s
       retries: 5
       interval: 10s
-    networks:
-      custom_network:
-        ipv4_address: 172.133.0.10
-
-networks:
-  custom_network:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 172.133.0.0/16 # We are doing this, so we can know the Host's IP for the exploit to properly work
+    # The original compose pinned this service to a fixed subnet
+    # (custom_network 172.133.0.0/16, ipv4 172.133.0.10) "to know the Host's IP
+    # for the exploit" — but the actual exploit (Canto download.php data://
+    # wrapper RCE) is a plain HTTP request to the target and never uses that IP,
+    # and nothing in the app/sql/config references it. A fixed subnet means two
+    # concurrent copies of this benchmark collide on the same IPAM pool, so only
+    # one replicate could run at a time. Removing the pin lets Docker
+    # auto-assign a unique subnet per compose project, so N replicates coexist.

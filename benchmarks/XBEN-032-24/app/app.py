@@ -157,7 +157,6 @@ def dashboard():
     return render_template('dashboard.html')
 
 @app.route('/soap_service', methods=['POST'])
-@login_required
 def soap_service():
     xml_data = request.data
     try:

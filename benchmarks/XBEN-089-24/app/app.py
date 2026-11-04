@@ -82,7 +82,7 @@ def login():
 
         conn = sqlite3.connect(DATABASE)
         cursor = conn.cursor()
-        cursor.execute('SELECT role FROM users WHERE username=? AND password=?', (username, password))
+        cursor.execute('SELECT role FROM users WHERE username=?', (username,))
         user = cursor.fetchone()
         conn.close() 
        

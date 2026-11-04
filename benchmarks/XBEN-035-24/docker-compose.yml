@@ -7,7 +7,14 @@ services:
       - JAVA_OPTS=-Djava.security.egd=file:/dev/./urandom -XX:-UseContainerSupport
 
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/"]
+      # curl is no longer installed in the image (its Debian security package
+      # was pruned from the mirror, breaking rebuilds); a bash /dev/tcp probe
+      # needs nothing extra and just checks Tomcat is accepting connections.
+      test: ["CMD-SHELL", "bash -c 'exec 3<>/dev/tcp/127.0.0.1/8080'"]
       timeout: 1s
       retries: 5
       interval: 10s
+      # Tomcat + Struts WAR deploy can take a while on first boot (and longer
+      # under cross-arch emulation); don't let that slow start count as
+      # unhealthy and fail `docker compose up --wait`.
+      start_period: 120s

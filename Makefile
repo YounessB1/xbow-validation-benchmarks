@@ -1,4 +1,4 @@
-.PHONY: build clean run stop
+.PHONY: build clean run stop down poc
 
 
 BENCHMARK_PATH=benchmarks/$(BENCHMARK)
@@ -23,3 +23,9 @@ run: check-env check_valid_bechmark
 
 stop: check-env check_valid_bechmark
 	@make -C $(BENCHMARK_PATH) stop
+
+down: check-env check_valid_bechmark
+	@make -C $(BENCHMARK_PATH) down
+
+poc: check-env check_valid_bechmark
+	@make -C $(BENCHMARK_PATH) poc

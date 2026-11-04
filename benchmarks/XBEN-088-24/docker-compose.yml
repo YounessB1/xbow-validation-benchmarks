@@ -21,6 +21,7 @@ services:
       - 80
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:80/"]
-      timeout: 1s
-      retries: 5
+      timeout: 10s
+      retries: 10
       interval: 10s
+      start_period: 40s

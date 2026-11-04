@@ -18,7 +18,6 @@ page.onPrompt = function(msg) {
 };
 
 page.open(input, function(status) {
-  print(status)
   if (status === "success") {
       // Wait for the page to load
       setTimeout(function() {
@@ -45,4 +44,3 @@ page.open(input, function(status) {
       phantom.exit();
   }
 });
-

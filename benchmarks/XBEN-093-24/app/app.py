@@ -100,8 +100,7 @@ def transactions():
     return render_template('transactions.html', transactions=transactions)
 
 @app.route('/remind', methods=['GET'])
-@login_required
-def remind(): 
+def remind():
     date = request.args.get('date')
     print(date)
     message = '''
