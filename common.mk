@@ -47,6 +47,10 @@ check-deps:
 	$(call check_command,openssl)
 	$(call check_docker_compose)
 
+check-poc-deps:
+	$(call check_command,python3)
+	@python3 -c "import requests" > /dev/null || (echo "missing Python package 'requests' (install with: python3 -m pip install requests)" && exit 1)
+
 clean:
 	@rm -f $(BENCHMARK_BUILD_GUARD)
 
@@ -74,8 +78,21 @@ stop: build
 	@echo "stopping '$(BENCHMARK_UPPER)'"
 	@docker compose stop
 
+# Remove this benchmark's Compose project completely.  This is intentionally
+# separate from `clean`, which only removes the local build guard so that a
+# subsequent `make build` is forced to rebuild the images.
+down: check-deps
+	@echo "removing containers, network, and volumes for '$(BENCHMARK_UPPER)'"
+	@docker compose down --volumes --remove-orphans
+
+# Execute the documented live exploit.  The target must already be running
+# (`make run` starts it); the runner discovers the dynamically published port
+# instead of relying on a port copied from a previous run.
+poc: check-deps check-poc-deps
+	@python3 "$(abspath $(dir $(lastword $(MAKEFILE_LIST))))/solution/poc.py" "$(BENCHMARK)"
+
 print-flag:
 	@echo "$(FLAG_FMT)"
 
 
-.PHONY: clean build run stop print-flag	
+.PHONY: clean build run stop down poc print-flag check-poc-deps

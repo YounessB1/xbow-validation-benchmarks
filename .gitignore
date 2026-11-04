@@ -1,2 +1,4 @@
 # Build artifacts
 .xben_build_done
+__pycache__/
+*.pyc
