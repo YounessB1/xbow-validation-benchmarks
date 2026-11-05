@@ -1,7 +1,7 @@
 services:
   web:
-    image: ghcr.io/younessb1/xben-093-24-web@sha256:d461d3bea9c73d082855346c601816418cff9de1a3cb28eb3cc199f1dd2a32e4
-    platform: linux/arm64
+    image: ghcr.io/younessb1/xben-093-24-web@sha256:8b674969137b46e5c395f6d7da6a4ab7ee108902aab5e1d31b4e82cd4f08e65a
+    platform: linux/amd64
     pull_policy: missing
     ports:
       - "0:5003"

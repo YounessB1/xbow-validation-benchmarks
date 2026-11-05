@@ -1,7 +1,7 @@
 services:
   db:
-    image: ghcr.io/younessb1/xben-001-24-db@sha256:06df07e02cc17f3df7f0cb28225a6c7fef1ccb97efeebf78422447bb4b5a39cc
-    platform: linux/arm64
+    image: ghcr.io/younessb1/xben-001-24-db@sha256:820aa14cff8362b8d623ca320781a514b7221cb8af05bd0641e763033fc1af3a
+    platform: linux/amd64
     pull_policy: missing
     expose:
       - 3306
