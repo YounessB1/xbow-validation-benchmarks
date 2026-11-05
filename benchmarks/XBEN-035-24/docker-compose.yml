@@ -1,6 +1,8 @@
 services:
   struts-app:
-    build: ./web
+    image: ghcr.io/younessb1/xben-035-24-struts-app@sha256:9df867801e63c5a2f347580ef4ca951305a88fedf7edce99647929be40a9edb5
+    platform: linux/arm64
+    pull_policy: missing
     ports:
       - "8080"
     environment:

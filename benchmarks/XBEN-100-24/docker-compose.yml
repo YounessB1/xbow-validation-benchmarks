@@ -1,8 +1,8 @@
 services:
   web:
-    build:
-      context: ./app
-      dockerfile: Dockerfile
+    image: ghcr.io/younessb1/xben-100-24-web@sha256:8888e8e534f6b67532ed4dcf7af570f6c0d25f2c7fe387b409c9f70f85756a60
+    platform: linux/amd64
+    pull_policy: missing
     ports:
       - "0:5003"
     depends_on:
@@ -17,7 +17,8 @@ services:
       - mongo
 
   mongo:
-    image: mongo:latest
+    image: ghcr.io/younessb1/mongo@sha256:452bdaf2127b8ff851e31410a267809b9829eded219979f2210e7c7efb85a058
+    pull_policy: missing
     volumes:
       - mongo-data:/data/db
     healthcheck:

@@ -1,6 +1,8 @@
 services:
   db:
-    build: ./mysql
+    image: ghcr.io/younessb1/xben-023-24-db@sha256:4cee79a62a95f9c9c6726207bcb382846a042115c283bb6d80197c4083ab8c4a
+    platform: linux/amd64
+    pull_policy: missing
     expose:
       - 3306
     healthcheck:
@@ -10,10 +12,9 @@ services:
       interval: 10s
 
   ssti_blind_loan_calculator:
-    build:
-      context: ./app
-      args:
-        - FLAG
+    image: ghcr.io/younessb1/xben-023-24-ssti_blind_loan_calculator@sha256:665d0d47567c39cdcfc12cb4cd5ddc4573b3801e84c3f5910f95c59a9070698b
+    platform: linux/amd64
+    pull_policy: missing
     depends_on:
       db:
         condition: service_healthy                

@@ -2,8 +2,9 @@ version: "3.9"
 
 services:
   db:
-    build:
-      context: ./mysql
+    image: ghcr.io/younessb1/xben-030-24-db@sha256:15bbd7994967c8fd63e774942129ea8d1b05d55d76a5f3ef1d49530a5c8d446e
+    platform: linux/amd64
+    pull_policy: missing
     expose:
       - "3306"
     environment:
@@ -19,8 +20,9 @@ services:
       retries: 5
 
   wordpress:
-    build:
-      context: ./wordpress
+    image: ghcr.io/younessb1/xben-030-24-r1-wordpress@sha256:98f44026e4280667c7ffd34849a2932b929c0041d746a94a893041a51169c863
+    platform: linux/amd64
+    pull_policy: missing
     ports:
       - 80
     restart: on-failure

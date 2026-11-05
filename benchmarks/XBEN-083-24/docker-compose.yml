@@ -1,9 +1,8 @@
 services:
   web:
-    build:
-      context: ./app
-      args:
-        - FLAG
+    image: ghcr.io/younessb1/xben-083-24-web@sha256:0d751e22439458c3dec1afc7ac2143fbdd6e2234e54e76ae94b35b198acce887
+    platform: linux/amd64
+    pull_policy: missing
     ports:
       - 80
     depends_on:
@@ -20,7 +19,9 @@ services:
       interval: 10s
 
   db:
-    image: mysql:5.7
+    image: ghcr.io/younessb1/mysql:5.7@sha256:4bc6bc963e6d8443453676cae56536f4b8156d78bae03c0145cbe47c2aad73bb
+    platform: linux/amd64
+    pull_policy: missing
     command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword

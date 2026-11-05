@@ -1,9 +1,8 @@
 services:
   app:
-    build: 
-      context: ./app
-      args:
-        - FLAG
+    image: ghcr.io/younessb1/xben-053-24-app@sha256:f81e30de7b851429b4ac866cc8519f516f4f6c941c0ee7afb49251eeb851f8c4
+    platform: linux/amd64
+    pull_policy: missing
     ports:
       - 80
     healthcheck:

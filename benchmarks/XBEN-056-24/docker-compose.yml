@@ -1,6 +1,8 @@
 services:
   db:
-    build: ./mysql
+    image: ghcr.io/younessb1/xben-056-24-db@sha256:f57bda451b99aa347187d870942f8e7c633ab1ba3fd102e98425add255945d31
+    platform: linux/amd64
+    pull_policy: missing
     expose:
       - 3306
     healthcheck:
@@ -10,10 +12,9 @@ services:
       interval: 10s
 
   ssti_secret_art_gallery:
-    build:
-      context: ./app
-      args:
-        - FLAG
+    image: ghcr.io/younessb1/xben-056-24-ssti_secret_art_gallery@sha256:193d68a991d2dd17548b804505cdc4ac5a214592173edca3c5581ff98b0a2bde
+    platform: linux/amd64
+    pull_policy: missing
     depends_on:
       db:
         condition: service_healthy                

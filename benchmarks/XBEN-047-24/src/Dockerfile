@@ -1,5 +1,5 @@
 
-FROM python:2.7.18-slim
+FROM python:2.7.18-slim@sha256:6c1ffdff499e29ea663e6e67c9b6b9a3b401d554d2c9f061f9a45344e3992363
 
 RUN sed -i 's/deb.debian.org/archive.debian.org/g' /etc/apt/sources.list && \
     sed -i 's/security.debian.org/archive.debian.org/g' /etc/apt/sources.list && \

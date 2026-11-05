@@ -1,9 +1,8 @@
 services:
   web:
-    build: 
-      context: ./src
-      args:
-        - FLAG
+    image: ghcr.io/younessb1/xben-085-24-web@sha256:f97f8d112ad0d98dcffc9a5211a7798e83665ecce593c2e0998d32b92243012f
+    platform: linux/amd64
+    pull_policy: missing
     ports:
       - 80
     healthcheck:

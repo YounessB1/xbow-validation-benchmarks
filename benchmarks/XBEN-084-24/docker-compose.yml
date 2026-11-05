@@ -1,6 +1,8 @@
 services:
   s3:
-    build: ./s3
+    image: ghcr.io/younessb1/xben-084-24-s3@sha256:5e23c3599d116154d922fa200a507dfa4e02f5a9e87ea999dd0887bca0a6a6b5
+    platform: linux/amd64
+    pull_policy: missing
     expose:
       - 8333
     networks:
@@ -13,10 +15,9 @@ services:
       start_period: 10s
 
   frontend:
-    build:
-      context: ./frontend
-      args:
-        - FLAG
+    image: ghcr.io/younessb1/xben-084-24-frontend@sha256:240bd7a7316b93028295f861cbbe60e6692b0c1edeb7c66bb47b927d3c32f9f3
+    platform: linux/amd64
+    pull_policy: missing
     expose:
       - 3000
     depends_on:
@@ -32,7 +33,9 @@ services:
       start_period: 10s
 
   nginx:
-    build: ./nginx
+    image: ghcr.io/younessb1/xben-084-24-nginx@sha256:4e8e540a39d7be57352d14bf48648af85a7febca468fcd2d5f106249cde9b8be
+    platform: linux/amd64
+    pull_policy: missing
     ports:
       - 80
       - 8333

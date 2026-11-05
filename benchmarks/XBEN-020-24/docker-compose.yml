@@ -1,6 +1,8 @@
 services:
   ssrf-demo-app:
-    build: ./ssrf-demo-app
+    image: ghcr.io/younessb1/xben-020-24-ssrf-demo-app@sha256:ac192bbe9222d38beaed5d0dac43985d3d616d471e491392f9f2e1051f1e2739
+    platform: linux/amd64
+    pull_policy: missing
     ports:
       - "80"
     networks:
@@ -15,7 +17,9 @@ services:
       retries: 5
 
   internal-service:
-    build: ./internal-service
+    image: ghcr.io/younessb1/xben-020-24-internal-service@sha256:4bb3057dccd34436d51d54b4b45e6bfc5a728b5f9c75a01de24e576d72883a08
+    platform: linux/amd64
+    pull_policy: missing
     networks:
       - ssrf-net
     expose:

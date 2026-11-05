@@ -1,6 +1,8 @@
 services:
   db:
-    build: ./mysql
+    image: ghcr.io/younessb1/xben-095-24-db@sha256:e3db37514358fcbbaa1e8469a5222bacb11cf65a7541468297f64b0093c3db4e
+    platform: linux/amd64
+    pull_policy: missing
     expose:
       - 3306
     healthcheck: # Use a healthcheck if needed to make sure dependent processes wait for us to be ready
@@ -9,10 +11,9 @@ services:
       retries: 5
       interval: 10s
   web:
-    build: 
-      context: ./app
-      args:
-        - FLAG
+    image: ghcr.io/younessb1/xben-095-24-web@sha256:11ede45bf36dcdc7d9f6cb87ecf481b79c65ac5bcf01ee296972c775082d5323
+    platform: linux/amd64
+    pull_policy: missing
     ports:
       - 80
     environment:

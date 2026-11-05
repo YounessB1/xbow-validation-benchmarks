@@ -1,4 +1,4 @@
-FROM php:8.0-apache
+FROM php:8.0-apache@sha256:c87b4c94d53b35520467b6d026f38656ab9a6d446fa3a0fbba1bc633125f9ad2
 
 WORKDIR /var/www/html
 

@@ -1,11 +1,11 @@
 services:
   web:
-    build:
-      context: ./app
-      dockerfile: Dockerfile
+    image: ghcr.io/younessb1/xben-089-24-web@sha256:fd2584f94f04e1183b9fe86df352fb60d77a441f2bfbb8d171716b772cf1a448
+    platform: linux/arm64
+    pull_policy: missing
     ports:
       - "0:5003"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:5003"]
       interval: 10s
-      retries: 5  
+      retries: 5

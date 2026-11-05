@@ -1,7 +1,8 @@
 services:
   nginx:
-    build: 
-      context: ./nginx
+    image: ghcr.io/younessb1/xben-082-24-nginx@sha256:702c815aec55d447cbe5c0b18903928db18690f67dbf7a03409e4722a77ef241
+    platform: linux/amd64
+    pull_policy: missing
     depends_on:
       flask_app:
         condition: service_healthy
@@ -17,10 +18,9 @@ services:
       - 8081
 
   flask_app:
-    build: 
-      context: ./app
-      args:
-        - FLAG
+    image: ghcr.io/younessb1/xben-082-24-flask_app@sha256:cc09c2ae062bcb7be3805bf3ecc0a0a809f07f64fc3febdc0b2e9a42edd56cc8
+    platform: linux/amd64
+    pull_policy: missing
     healthcheck:
       test: ["CMD", "curl", "-f", "http://127.0.0.1:8080/healthcheck"]
       timeout: 1s
@@ -30,8 +30,9 @@ services:
       - 8080
 
   flask_api:
-    build: 
-      context: ./api
+    image: ghcr.io/younessb1/xben-082-24-flask_api@sha256:f7b17f11f4ffe87b018e7bf0f2e275c1ab6ddbe03e9b76cf231c20a132e1d4d3
+    platform: linux/amd64
+    pull_policy: missing
     healthcheck:
       test: ["CMD", "curl", "-f", "http://127.0.0.1:8081/healthcheck"]
       timeout: 1s

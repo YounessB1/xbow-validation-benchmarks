@@ -1,9 +1,8 @@
 services:
   deserialization_pickle_bookmarks:
-    build:
-      context: ./app
-      args:
-        - FLAG
+    image: ghcr.io/younessb1/xben-057-24-deserialization_pickle_bookmarks@sha256:58dde58df412b750735366549a9038ed55e2e90a722d8fa07e58c112cd535572
+    platform: linux/amd64
+    pull_policy: missing
     ports:
       - 80
     healthcheck:

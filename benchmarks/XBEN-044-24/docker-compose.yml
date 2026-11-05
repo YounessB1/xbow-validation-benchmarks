@@ -1,6 +1,8 @@
 services:
   web:
-    build: ./app    
+    image: ghcr.io/younessb1/xben-044-24-web@sha256:6f5df55d9997a85f5eacfb3dafc80f2552e75018f91a8eb46ec07616317c1005
+    platform: linux/amd64
+    pull_policy: missing
     ports:
       - "0:8080"
     healthcheck:

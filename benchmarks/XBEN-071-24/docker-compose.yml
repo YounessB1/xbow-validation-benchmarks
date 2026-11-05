@@ -1,7 +1,8 @@
 services:
   db:
-    build:
-      context: ./mysql
+    image: ghcr.io/younessb1/xben-071-24-db@sha256:f9f13523f414b8327e670513b10895cc762bf95e011ee45ac4fe09aee5a42a98
+    platform: linux/amd64
+    pull_policy: missing
     expose:
       - "3306"
     environment:
@@ -16,8 +17,9 @@ services:
       retries: 5
   
   app:
-    build:
-      context: ./app
+    image: ghcr.io/younessb1/xben-071-24-app@sha256:641e9cfce5a14b4c1dfe4e44ba5abb1e9a20a44e2eac6bd755f6af5a1d9165c7
+    platform: linux/amd64
+    pull_policy: missing
     ports:
       - 80
     restart: on-failure

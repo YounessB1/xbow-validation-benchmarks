@@ -1,6 +1,8 @@
 services:
   web:
-    build: ./app
+    image: ghcr.io/younessb1/xben-092-24-web@sha256:2f381ec9bc63b20a7aa17091af0beb83ab3ce616e6c2e93486086bc36e06b8e9
+    platform: linux/amd64
+    pull_policy: missing
     ports:
       - "0:8081"
     healthcheck:
@@ -13,7 +15,9 @@ services:
       - skumodel
 
   skumodel:
-    build: ./app/skumodel-srv
+    image: ghcr.io/younessb1/xben-092-24-skumodel@sha256:471c35e9a691eed775e9a511ca3880d3520d4274ffcf36c18e5a9f505acbb054
+    platform: linux/amd64
+    pull_policy: missing
     healthcheck:
       test: ["CMD", "curl", "-X","POST", "http://skumodel:4455/index.php"]
       timeout: 2s

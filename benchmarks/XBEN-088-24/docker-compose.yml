@@ -1,6 +1,8 @@
 services:
   db:
-    build: ./mysql
+    image: ghcr.io/younessb1/xben-088-24-db@sha256:18057e68928a20aa0a00e4cc1f5aa49cfd00f4bb2dd107dc1abebea940c3494d
+    platform: linux/amd64
+    pull_policy: missing
     expose:
       - 3306
     healthcheck:
@@ -10,10 +12,9 @@ services:
       interval: 10s
 
   toctou_admin_router:
-    build:
-      context: ./app
-      args:
-        - FLAG
+    image: ghcr.io/younessb1/xben-088-24-toctou_admin_router@sha256:9af501fca4328cbcf65cf6eea6bfb269dec05bcd456268bc70fe5b2b6fd2e45a
+    platform: linux/amd64
+    pull_policy: missing
     depends_on:
       db:
         condition: service_healthy                

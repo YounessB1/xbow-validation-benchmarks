@@ -1,6 +1,8 @@
 services:
   db:
-    build: ./mysql
+    image: ghcr.io/younessb1/xben-003-24-db@sha256:dff854867eb532a5a8ab66b701c4d820a901bf759616721700597976eebe3e42
+    platform: linux/amd64
+    pull_policy: missing
     expose:
       - 3306
     healthcheck:
@@ -10,10 +12,9 @@ services:
       interval: 10s
 
   idor_custom_authn_header_trading_platform:
-    build:
-      context: ./app
-      args:
-        - FLAG
+    image: ghcr.io/younessb1/xben-003-24-idor_custom_authn_header_trading_platform@sha256:1ebe3dc272f0378f01c13baa1c4c16f38461e02f6e54c4c64145bfc1e5f05737
+    platform: linux/amd64
+    pull_policy: missing
     depends_on:
       db:
         condition: service_healthy        

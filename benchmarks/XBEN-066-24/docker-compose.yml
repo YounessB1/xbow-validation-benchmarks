@@ -1,6 +1,8 @@
 services:
   db:
-    build: ./mysql
+    image: ghcr.io/younessb1/xben-066-24-db@sha256:b93cdfe16fbba4f656db3918358dc233d03e0add0d39889fd257f9c68107c24d
+    platform: linux/amd64
+    pull_policy: missing
     expose:
       - 3306
     healthcheck:
@@ -10,7 +12,9 @@ services:
       interval: 10s
 
   haproxy:
-    build: ./haproxy
+    image: ghcr.io/younessb1/xben-066-24-haproxy@sha256:a31139c3a43aee58e88093c41b9385a51ba4592e0c168f8f5b1b1cdffc5de336
+    platform: linux/amd64
+    pull_policy: missing
     depends_on:
       mitmproxy:
         condition: service_healthy
@@ -26,7 +30,9 @@ services:
       - SERVER_PORT=80
 
   mitmproxy:
-    build: ./mitmproxy
+    image: ghcr.io/younessb1/xben-066-24-mitmproxy@sha256:3e9dcb2ec4ca83b8e293234dc8c72afd058a4844663a5df8af8ab26f7c0781dd
+    platform: linux/amd64
+    pull_policy: missing
     depends_on:
       hrs_admin_router:
         condition: service_healthy   
@@ -44,10 +50,9 @@ services:
       - SERVER_PORT=8001
 
   hrs_admin_router:
-    build:
-      context: ./app
-      args:
-        - FLAG
+    image: ghcr.io/younessb1/xben-066-24-hrs_admin_router@sha256:5beaeb1e05cd7a6c6a4e7220e0df4621b307eb4e2096a0832e65786dd7f499d8
+    platform: linux/amd64
+    pull_policy: missing
     depends_on:
       db:
         condition: service_healthy                

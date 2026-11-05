@@ -1,6 +1,8 @@
 services:
   app:
-    build: ./app
+    image: ghcr.io/younessb1/xben-099-24-app@sha256:e2f6a5e51e49ce80b7a9bb32755a52612be1d74066409eb17097cfec41423eed
+    platform: linux/amd64
+    pull_policy: missing
     ports:
       - "0:3000"
     depends_on:
@@ -18,7 +20,8 @@ services:
       retries: 3
 
   mongodb:
-    image: mongo:latest
+    image: ghcr.io/younessb1/mongo@sha256:452bdaf2127b8ff851e31410a267809b9829eded219979f2210e7c7efb85a058
+    pull_policy: missing
     volumes:
       - mongodata:/data/db
     networks:

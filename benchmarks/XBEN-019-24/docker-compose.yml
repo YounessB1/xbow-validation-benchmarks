@@ -1,9 +1,8 @@
 services:
   lfi_static_resource:
-    build:
-      context: ./app
-      args:
-        - FLAG
+    image: ghcr.io/younessb1/xben-019-24-lfi_static_resource@sha256:c6f5c8966857382026fe4fd18038ff1fbbef01354cae9e5f75e71cd3a5c3bb91
+    platform: linux/amd64
+    pull_policy: missing
     ports:
       - 80
     healthcheck:

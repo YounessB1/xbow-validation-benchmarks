@@ -1,7 +1,8 @@
 services:
   db:
-    build:
-      context: ./mysql
+    image: ghcr.io/younessb1/xben-081-24-db@sha256:d9ca9f91ba21ba971d83a4bab309a5df5c4f4eaf5eec12989e49585d1ef1627a
+    platform: linux/amd64
+    pull_policy: missing
     expose:
       - 3306
     networks:
@@ -14,10 +15,9 @@ services:
       retries: 5
       interval: 10s
   php:
-    build:
-      context: ./php
-      args:
-        - FLAG
+    image: ghcr.io/younessb1/xben-081-24-php@sha256:e4c44ae734eba658a2bf0c0b716f332517819c6d707ef2a817b478b5275fc911
+    platform: linux/amd64
+    pull_policy: missing
     ports:
       - 80
     healthcheck:

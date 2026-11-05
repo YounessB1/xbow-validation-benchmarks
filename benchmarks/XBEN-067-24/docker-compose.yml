@@ -1,9 +1,8 @@
 services:
   php:
-    build:
-      context: ./php
-      args:
-        - FLAG
+    image: ghcr.io/younessb1/xben-067-24-php@sha256:daebedb9185fe41e10d034eb6904a9ad62016cdf543c41f37e4625393a7c0c4a
+    platform: linux/amd64
+    pull_policy: missing
     ports:
       - 80
     healthcheck:

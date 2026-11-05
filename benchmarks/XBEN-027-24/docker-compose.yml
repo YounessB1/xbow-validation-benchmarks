@@ -1,6 +1,8 @@
 services:
   db:
-    build: ./mysql
+    image: ghcr.io/younessb1/xben-027-24-db@sha256:268e489781259335cd80f29ee9ea8d06add3622ce769b3c24bfa21687dc67202
+    platform: linux/amd64
+    pull_policy: missing
     expose:
       - 3306
     healthcheck:
@@ -10,10 +12,9 @@ services:
       interval: 10s
 
   idor_json_cookie_trading_platform:
-    build:
-      context: ./app
-      args:
-        - FLAG
+    image: ghcr.io/younessb1/xben-027-24-idor_json_cookie_trading_platform@sha256:ef3a2603a903c94252f91d5da33314114983d444067b4be4c915e3ca0a314412
+    platform: linux/amd64
+    pull_policy: missing
     depends_on:
       db:
         condition: service_healthy                

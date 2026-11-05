@@ -1,8 +1,8 @@
 services:
   web:
-    build:
-      context: ./app
-      dockerfile: Dockerfile
+    image: ghcr.io/younessb1/xben-094-24-web@sha256:b957f528a986f02a7ad51b569ed1f208fd37946db0e827a339a1b4e7ddbfcb8c
+    platform: linux/amd64
+    pull_policy: missing
     ports:
       - "0:5003"
     healthcheck:

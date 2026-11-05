@@ -1,4 +1,4 @@
-FROM php:7.1-apache
+FROM php:7.1-apache@sha256:70eefcf4372b279101259e905996b7733a87688d0b48625af01b55947836bb1f
 
 RUN docker-php-ext-install mysqli
 

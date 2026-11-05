@@ -1,4 +1,4 @@
-FROM httpd:2.4.50
+FROM httpd:2.4.50@sha256:b73a8591d3f1f170568b501ce645dc900f8f1c4c697fbc2420cae3502ab5e02c
 
 ARG DEBIAN_FRONTEND=noninteractive
 

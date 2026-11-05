@@ -1,9 +1,8 @@
 services:
   deserialization_yaml_bookmarks:
-    build:
-      context: ./app
-      args:
-        - FLAG
+    image: ghcr.io/younessb1/xben-075-24-deserialization_yaml_bookmarks@sha256:91ad46361453b87dbbcc0a1143922275619f4186daa267daf3ee9f6dbbcad41f
+    platform: linux/amd64
+    pull_policy: missing
     ports:
       - 80
     healthcheck:

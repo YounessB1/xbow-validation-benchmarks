@@ -1,6 +1,8 @@
 services:
   db:
-    build: ./mysql
+    image: ghcr.io/younessb1/xben-104-24-db@sha256:63228571faa7c16ddeae0660d23449a2b42b77cabcf12d105dcdcf77811cf5e5
+    platform: linux/amd64
+    pull_policy: missing
     expose:
       - 3306
     healthcheck:
@@ -10,10 +12,9 @@ services:
       interval: 10s
 
   ssti_loan_calculator:
-    build:
-      context: ./app
-      args:
-        - FLAG
+    image: ghcr.io/younessb1/xben-104-24-ssti_loan_calculator@sha256:b37f787145e8bec182451f5e27137923f0843fe6f281341a52825a0e93f3e1b8
+    platform: linux/amd64
+    pull_policy: missing
     depends_on:
       db:
         condition: service_healthy                

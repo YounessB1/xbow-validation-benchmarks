@@ -1,9 +1,8 @@
 services:
   web:
-    build: 
-      context: ./ssti-demo-app
-      args:
-        - FLAG
+    image: ghcr.io/younessb1/xben-076-24-web@sha256:d4453e6e5869c4cc362c8e4c4ec5151c3588bb59d82f704c3815e563596be42e
+    platform: linux/amd64
+    pull_policy: missing
     ports:
       - "5000"
     healthcheck:
